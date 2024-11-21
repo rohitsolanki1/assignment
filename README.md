@@ -30,3 +30,4 @@ Docker Image: https://hub.docker.com/layers/rohitsolanki/assignment/latest/image
 Local Url: 172.17.10.135:9000
 GitHub Pages URL: https://rohitsolanki1.github.io/assignment/
 S3 Bucket Website Endpoint: http://assignment.v1.s3-website.ap-south-1.amazonaws.com
+CloudFront CDN URL: https://d2xt2xj6dpxx0r.cloudfront.net/
