@@ -4,6 +4,12 @@
 Assignment Overview
 This Assignment demonstrates how to create and deploy a static website using various tools such as GitHub, Jenkins, Docker, Amazon S3, and CloudFront CDN. The website consists of two pages, index.html and contact.html, which are served using an Nginx Docker container. The website is hosted on AWS S3 and served via CloudFront CDN for better performance and global access.
 
+Resources:
+Ubuntu VM on local Network, GitHub, Docker, Jenkins, Nginx, AWS S3 Bucket and AWS CloudFront
+
+Tools for Learning:
+Youtube, ChatGPT, Azure Lernings, KodeKloud
+
 Key Features:
 
 Static Website: Simple HTML pages (index.html, contact.html) served by an Nginx container.
