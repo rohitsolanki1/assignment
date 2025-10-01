@@ -1,57 +1,120 @@
-# assignment
+# 🌐 Static Website CI/CD Project
 
+![Jenkins](https://img.shields.io/badge/Jenkins-CI/CD-blue?logo=jenkins) ![Docker](https://img.shields.io/badge/Docker-Container-blue?logo=docker) ![AWS](https://img.shields.io/badge/AWS-S3%2FCloudFront-orange?logo=amazon-aws) ![GitHub](https://img.shields.io/badge/GitHub-Version_Control-black?logo=github)
 
-# Assignment Overview
-This Assignment demonstrates how to create and deploy a static website using various tools such as GitHub, Jenkins, Docker, Amazon S3, and CloudFront CDN. The website consists of two pages, index.html and contact.html, which are served using an Nginx Docker container. The website is hosted on AWS S3 and served via CloudFront CDN for better performance and global access.
+---
 
-# Resources:
-Ubuntu VM on local Network, GitHub, Docker, Jenkins, Nginx, AWS S3 Bucket and AWS CloudFront
+## **Project Overview**
 
-# Tools for Learning:
-Youtube, ChatGPT, Azure Learnings, KodeKloud
+This project demonstrates an **end-to-end CI/CD pipeline** for deploying a static website using:
 
-# Key Features:
+* GitHub for version control
+* Jenkins for automation
+* Docker for containerization
+* AWS S3 + CloudFront for cloud hosting
 
-Static Website: Simple HTML pages (index.html, contact.html) served by an Nginx container.
-GitHub: Used for version control and CI/CD pipeline configuration.
-Jenkins: Automated build and deployment pipeline.
-Docker: Used to create a containerized version of the website.
-Amazon S3: Cloud storage for static assets.
-CloudFront: Content Delivery Network (CDN) for improved performance.
+The website contains **`index.html`** and **`contact.html`** pages served via an Nginx Docker container.
 
-# Set Up CI/CD with Jenkins
+---
 
-Install Jenkins:
+## **Live Demo**
 
-Installed Jenkins on server (on local machine).
-Installed necessary plugins like GitHub Integration, Docker.
-Create a freestyle project in Jenkins.
+| Platform           | URL                                                                    |
+| ------------------ | ---------------------------------------------------------------------- |
+| **Local Server**   | `http://172.17.10.133:9001`                                            |
+| **GitHub Pages**   | [Visit Site](https://rohitsolanki1.github.io/assignment/)              |
+| **AWS S3 Bucket**  | [Visit Site](http://assignment.v1.s3-website.ap-south-1.amazonaws.com) |
+| **CloudFront CDN** | [Visit Site](https://d2xt2xj6dpxx0r.cloudfront.net)                    |
 
-# Clones the GitHub repository in the SCM section. Git repo is public authentication not required. 
-Git Repo: https://github.com/rohitsolanki1/assignment.git
+---
 
-Poll SCM Build triggers set to 5 star. This will run poll every minute. 
+## **Pipeline Overview**
 
-# Build Steps:
-# Stop all Docker containers that match the name "docker"
+![Jenkins Pipeline](https://raw.githubusercontent.com/your-username/assignment/main/images/jenkins-pipeline.png)
+*Screenshot of Jenkins automated build pipeline*
+
+**Steps in the pipeline:**
+
+1. **Clone GitHub repository**
+
+   * Public repo: [https://github.com/rohitsolanki1/assignment.git](https://github.com/rohitsolanki1/assignment.git)
+2. **Stop old Docker containers**
+3. **Remove old containers (optional)**
+4. **Build Docker image**
+5. **Deploy Docker container**
+
+**Build Script Example:**
+
+```bash
+# Stop all running Docker containers named "docker"
 docker ps -a | grep docker | awk '{print $1}' | xargs -r docker stop
-# Optional: Remove containers after stopping them
+
+# Optional: Remove old containers
 docker ps -a | grep docker | awk '{print $1}' | xargs -r docker rm
-# Docker build
+
+# Build Docker image
 docker build -t assignment:latest .
-# Docker Run
-docker run -d -p 9000:80 --name assignment assignment:latest
 
+# Run Docker container
+docker run -d -p 9001:80 --name assignment assignment:latest
+```
 
-# Live Website: 
-GitHub Repository: https://github.com/rohitsolanki1/assignment.git
-# Docker Image: 
-https://hub.docker.com/layers/rohitsolanki/assignment/latest/images/sha256:542175cf438e49bdf2371a5823a1c9336d4c1d66b0a352dc6ed4b6ae66670ce7?uuid=22A3F0B0-2585-4C0E-B396-2CBFC3D9AB28
-# Local URL: 
-172.17.10.152:9000
-# GitHub Pages URL: 
-https://rohitsolanki1.github.io/assignment/
-# S3 Bucket Website Endpoint: 
-http://assignment.v1.s3-website.ap-south-1.amazonaws.com
-# CloudFront CDN URL: 
-https://d2xt2xj6dpxx0r.cloudfront.net/
+---
+
+## **Docker Image**
+
+* **Docker Hub Repository:** [View Image](https://hub.docker.com/layers/rohitsolanki/assignment/latest/images/sha256:542175cf438e49bdf2371a5823a1c9336d4c1d66b0a352dc6ed4b6ae66670ce7?uuid=22A3F0B0-2585-4C0E-B396-2CBFC3D9AB28)
+
+---
+
+## **Technology Stack**
+
+| Category           | Tools                                        |
+| ------------------ | -------------------------------------------- |
+| Operating System   | Ubuntu VM                                    |
+| Version Control    | GitHub                                       |
+| CI/CD              | Jenkins                                      |
+| Containerization   | Docker, Nginx                                |
+| Cloud Hosting      | AWS S3, CloudFront                           |
+| Learning Resources | YouTube, ChatGPT, KodeKloud, Azure Learnings |
+
+---
+
+## **Project Structure**
+
+```
+assignment/
+├── index.html
+├── contact.html
+├── Dockerfile
+├── README.md
+└── assets/
+```
+
+---
+
+## **Key Skills Demonstrated**
+
+* CI/CD pipeline setup using Jenkins
+* Containerization with Docker
+* Automated website deployment
+* Multi-platform hosting (Local, GitHub Pages, AWS S3, CloudFront)
+* GitHub version control integration
+
+---
+
+## **Optional Enhancements for Portfolio**
+
+1. Add GIF of Jenkins pipeline execution
+2. Add screenshots of live website
+3. Show Docker container running (`docker ps`)
+4. Highlight automation: new commits trigger rebuild & redeploy
+
+---
+
+### **Why This Project Stands Out**
+
+* Full pipeline automation for a live website
+* Multi-platform deployment (Local + Cloud)
+* Demonstrates DevOps skills sought by recruiters
+* Combines Jenkins, Docker, GitHub, AWS into a single workflow
